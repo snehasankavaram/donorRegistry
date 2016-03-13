@@ -1,0 +1,88 @@
+// Place all the styles related to the Organizations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.card-1 {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
+
+.card-1:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+img {
+  border:1px solid white;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+
+.flat-table {
+  display: block;
+  font-family: sans-serif;
+  font-size: 115%;
+  overflow: auto;
+  width: auto;
+  margin-top: 30px;
+
+}
+
+div.one {
+  width: 60px;
+  float: left;
+}
+
+div.two {
+  margin-left: 60px;
+}
+
+#map img { max-width: none; }
+
+html{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.format {
+  margin-top: 30px;
+  text-align:center!important
+}
+
+.margin {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.ui-helper-center {
+    text-align: center;
+
+}
+
+.info {
+  font-size: 15px;
+}
+
+
+th {
+  text-align: center;
+  font-size: 16px;
+  height: 40px;
+  background-color: #4CD964;
+  color: white;
+  font-weight: lighter;
+  padding: 20px 30px;
+}
+td {
+  width: 31%;
+  height: 40px;
+  color: rgb(111, 111, 111);
+  padding: 20px 30px;
+}
+
+tr:hover {
+  background-color: #F7F7F7;
+  color: blue;
+}

@@ -7,6 +7,14 @@ gem 'nokogiri', '~> 1.6q'
 gem 'open-uri-s3'
 gem 'whenever', :require => false
 
+gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'sass-rails', '>= 3.4.19'
+
+gem 'bcrypt', '~> 3.1.7'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'spring'
@@ -24,7 +32,6 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 4.0.3'
   gem 'coffee-rails', '~> 4.0.0'
   gem 'uglifier', '>= 1.3.0'
 end

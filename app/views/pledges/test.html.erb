@@ -1,0 +1,23 @@
+<div class="row">
+
+  <div class="col-md-offset-2">
+    <h1 class = "title">Make a Pledge</h1>
+    <%= form_for(@pledge,  :url => { :action => :create } ) do |f| %>
+
+
+      <h4 class = 'first_field header'>Your Item:  <%= @item.name%></h4>
+
+      <%= f.hidden_field :item_name, :value => @item.name %>
+      <%= f.hidden_field :id, :value => @item.id %>
+
+
+      <%= f.label :quantity, :class => 'first_field' %>
+      <%= f.number_field :quantity, in: 1..@item.amount_needed, step: 1, :class => 'form-control' %>
+
+      <%= f.label :delivery_date, :class => 'first_field' %>
+      <%= f.date_field :delivery_date, :value => Time.now.strftime('%Y-%m-%d'),:class => 'form-control' %>
+
+      <%= f.submit "pledge", :class => 'btn btn-primary first_field'%>
+    <% end %>
+  </div>
+</div>

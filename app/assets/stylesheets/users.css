@@ -1,0 +1,28 @@
+/*// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/*/
+
+
+
+input {
+	width: 100%;
+}
+
+
+.first_field {
+	margin-top: 30px;
+}
+
+.header {
+	margin-top: 50px;
+}
+
+div {
+	font-family: 'Open Sans';
+	font-size: 15px;
+}
+
+
+
+/*menu bar code*/
+

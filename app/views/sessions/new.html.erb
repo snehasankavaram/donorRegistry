@@ -1,0 +1,20 @@
+<% provide(:title, "Log in") %>
+
+
+<div class="row">
+  <div class="col-md-3 col-md-offset-5">
+  	<h1>Log in</h1>
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :username, class: 'margin-wrapper'%>
+      <%= f.text_field :username, class: 'form-control' %>
+
+      <%= f.label :password, class: 'margin-wrapper' %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.submit "Log in", class: "btn btn-primary margin-wrapper" %>
+    <% end %>
+
+    <p class = "margin-wrapper">New user? <%= link_to "Sign up now!", '/signup' %></p>
+  </div>
+</div>

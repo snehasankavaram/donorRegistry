@@ -1,4 +1,35 @@
 Rails.application.routes.draw do
+  get 'organizations/index'
+
+  get 'organizations/show'
+
+  get 'organizations/new'
+
+  get 'sessions/new'
+
+  get 'signup' => 'users#new'
+
+  get 'pledges' => 'pledges#index'
+
+  get    'login'   => 'sessions#new', as: 'login_path'
+  post   'login'   => 'sessions#create'
+  get    'logout'  => 'sessions#destroy'
+
+  get 'organizations' => 'organizations#index'
+
+
+
+
+
+  get 'organizations/:name' => 'organizations#view'
+
+  get 'pledge' => 'pledges#new'
+  post 'pledge' => 'pledges#create'
+
+  get 'organizations/pledges/new' => 'pledges#new'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,6 +42,9 @@ Rails.application.routes.draw do
   post 'users/create' => 'users#create'
 
   get 'users/show' => 'users#show'
+
+  resources :users
+  resources :sessions
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

@@ -11,7 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309041615) do
+ActiveRecord::Schema.define(version: 20160313044907) do
+
+  create_table "organizations", force: true do |t|
+    t.float    "lat"
+    t.float    "lon"
+    t.string   "address"
+    t.string   "name"
+    t.text     "about"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "address_line_2"
+    t.string   "phone_number"
+  end
+
+  create_table "pledges", force: true do |t|
+    t.string   "item_name"
+    t.string   "quantity"
+    t.boolean  "fulfilled"
+    t.datetime "delivery_date"
+    t.boolean  "expired"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "pledges", ["user_id"], name: "index_pledges_on_user_id"
+
+  create_table "registry_items", force: true do |t|
+    t.string   "name"
+    t.integer  "amount_needed"
+    t.integer  "amount_pledged"
+    t.integer  "amount_received"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "registry_items", ["organization_id"], name: "index_registry_items_on_organization_id"
 
   create_table "users", force: true do |t|
     t.string   "username"
@@ -23,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160309041615) do
     t.string   "name"
     t.float    "lat"
     t.float    "lon"
+    t.string   "password_digest"
   end
 
 end

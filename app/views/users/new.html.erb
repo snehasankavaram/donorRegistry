@@ -1,0 +1,48 @@
+<% provide(:title, 'Sign up') %>
+<html>
+
+
+
+<div class="row">
+
+  <div class="col-md-5 col-md-offset-4">
+    <h1 class = "title">Hello! Sign up to Donate</h1>
+    <%= form_for(@user) do |f| %>
+
+      <h4 class = 'first_field header'>General Contact Info</h4>
+
+      <%= f.label :name, :class => 'first_field' %>
+      <%= f.text_field :name, :class => 'form-control' %>
+
+
+
+      <%= f.label :phone_number, :class => 'first_field' %>
+      <%= f.text_field :phone_number, :class => 'form-control' %>
+
+      <%= f.label "Address", :class => 'first_field' %>
+      <%= f.text_field :location, :class => 'form-control' %>
+
+
+       <h4 class = 'first_field header'>Account Credentials</h4>
+
+      <%= f.label :username, :class => 'first_field' %>
+      <%= f.text_field :username, :class => 'form-control' %>
+
+
+      <%= f.label :password, :class => 'first_field' %>
+      <%= f.password_field :password, :class => 'form-control' %>
+
+
+
+      <%= f.label :password_confirmation, "Confirm Password", :class => 'first_field'%>
+      <%= f.password_field :password_confirmation, :class => 'form-control' %>
+
+      <%= f.submit "Create Account", :class => 'btn btn-primary first_field'%>
+    <% end %>
+  </div>
+</div>
+
+</html>
+
+
+<!-- %= f.submit "Create my account", class: "btn btn-primary" %> -->

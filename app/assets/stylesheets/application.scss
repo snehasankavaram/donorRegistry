@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+
+/**
+ *  Menu Styling
+ *
+ *  This following styling is the basic styling
+ *  for a horizontal menu bar.
+ */
+#menu1{
+	position: fixed;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color:white;
+}
+
+.home_link {
+	font-size: 22px;
+	margin-left: 2%;
+	width: 68%;
+	text-align: left;
+	vertical-align: center;
+
+}
+
+.menu a:link, a:visited {
+    height: 40px;
+    display: table-cell;
+    vertical-align: bottom;
+    color: black;
+
+    text-align: left;
+
+    padding: 4px;
+    text-decoration: none;
+}
+
+.menu a:hover, a:active {
+	color: #FDB515;
+}
+
+
+ul {
+	top: 0;
+	left: 0;
+	width: 100%;
+	font-family: 'open sans';
+	font-weight: lighter;
+	font-size: 17px;
+	z-index: 10;
+	position: absolute;
+	display: inline-block;
+	background-color:transparent;
+
+	list-style-type: none;
+	padding: 0;
+	overflow: hidden;
+}
+
+li {
+	width: 10%;
+	float: left;
+	white-space:nowrap;
+}
+
+

@@ -1,17 +1,33 @@
 class UsersController < ApplicationController
 
 	def create
-		if User.find_by(username: params[:username]) == nil
-			@new_user = User.new(username: params[:username], password: params[:password],
-				location: params[:location], name: params[:name], phone_number: params[:phone_number])
-			@new_user.save
-		end
-
-		head :ok
-	end
+		@user = User.new(user_params)
+    	if @user.save
+    		# change to redirect to logged in state page
+    		log_in @user
+      		redirect_to @user
+    	else
+      		render 'new'
+      	end
+    end
 
 	def show
- 		@user = User.find_by(username: params[:username])
-     	render json: { user: @user }
+ 		@user = User.find(params[:id])
 	end
+
+	def new
+		@user = User.new
+	end
+
+	def login
+		@users = User.all
+		render 'login'
+	end
+
+	private
+
+	    def user_params
+	      params.require(:user).permit(:name, :phone_number, :password,:location, :username)
+    end
+
 end
