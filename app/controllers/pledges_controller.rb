@@ -11,7 +11,7 @@ class PledgesController < ApplicationController
 
 		date = Time.parse(params[:pledge][:delivery_date])
 
-		@pledge.update(:delivery_date => timed_date)
+		@pledge.update(:delivery_date => date)
 
 		if !user_logged_in?
 			# do nothing? TODO: fixme
