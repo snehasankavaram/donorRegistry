@@ -2,15 +2,15 @@ class PledgesController < ApplicationController
 	def new
 		@item = RegistryItem.find(params[:item_id])
 		@pledge = Pledge.new
-		render 'test'
+		render 'new'
 	end
 
 	def create
 		@item = RegistryItem.find(params[:pledge][:id])
 		@pledge = Pledge.new(pledge_params)
 
-		if !logged_in?
-			# do nothing?
+		if !user_logged_in?
+			# do nothing? TODO: fixme
 			render login_path
 		else
 			# add to user's pledges
@@ -19,6 +19,10 @@ class PledgesController < ApplicationController
 	    	if @pledge.save
 	    		# render thanks for pledging page
 	    		pledges = @item.amount_pledged
+	    		if pledges == nil
+	    			pledges = 0
+	    		end
+
 	    		pledges = pledges + params[:pledge][:quantity].to_i
 
 	    		needed = @item.amount_needed
@@ -36,7 +40,7 @@ class PledgesController < ApplicationController
 
 
     def index
-    	@pledges = Pledge.all
+    	@pledges = current_user.pledges
     end
 
     private

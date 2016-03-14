@@ -1,15 +1,16 @@
-
+<%= render 'layouts/header' %>
 
 <div class="row">
 
-  <div class="col-md-3 col-md-offset-5">
+   <div class="col-md-5 col-md-offset-2">
     <h1 class = "title">Make a Pledge</h1>
-    <%= form_for(@pledge) do |f| %>
+    <%= form_for(@pledge,  :url => { :action => :create } ) do |f| %>
 
 
       <h4 class = 'first_field header'>Your Item:  <%= @item.name%></h4>
 
-      <%= f.hidden_field :name, :value => @item.name %>
+      <%= f.hidden_field :item_name, :value => @item.name %>
+      <%= f.hidden_field :id, :value => @item.id %>
 
 
       <%= f.label :quantity, :class => 'first_field' %>

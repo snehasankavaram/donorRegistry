@@ -1,0 +1,68 @@
+
+<%= render 'layouts/orgheader' %>
+
+  <div >
+    <h1 class = "title margin">Contact Donors</h1>
+
+
+    <!-- get the radius -->
+    <div class = "row" style = "margin-top:60px;">
+     <%= form_for(:users_controller, url: filter_path) do |f| %>
+        <div class = "col-sm-2">
+        <%= f.number_field :radius, :value => @radius,  :class => 'form-control' %>
+        </div>
+
+        <div class = "col-sm-2">
+        <%= f.submit "get donors", :class => 'btn btn-primary', :width=>"20px" %>
+        </div>
+     <% end %>
+
+   </div>
+
+
+    <!-- make a get request to users_filter_path with radius parameter -->
+
+    <!-- use a form? -->
+
+    <!-- Number of Donors -->
+    <div class = "margin">
+      <h5>donors within this radius:</5>
+      <%= @donor_count %>
+    </div>
+
+
+    <!-- Form to send Message -->
+
+    <% if @donor_count.to_i > 0 %>
+
+     <div class = "row" style = "margin-top:60px;">
+     <%= form_for(:users_controller, url: users_message_path) do |f| %>
+
+
+        <div class = "col-sm-6">
+        <h1 style = "margin-top:60px;margin-bottom:30px;">Message</h1>
+        <%= f.text_area :message, :rows=> "10", :class => 'form-control margin' %>
+        </div>
+
+        </div>
+
+        <div class = "row" style = "margin-top:30px;">
+        <div class = "col-sm-2">
+        <%= f.submit "send", :class => 'btn btn-primary', :width=>"20px" %>
+        </div>
+
+        <%= f.hidden_field :radius, :value => @radius %>
+
+     <% end %>
+    <% end %>
+
+   </div>
+
+
+
+    <!-- Message Box -->
+
+    <!-- submit button -->
+
+</div>
+

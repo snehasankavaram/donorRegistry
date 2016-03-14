@@ -1,0 +1,2 @@
+module RegistryItemHelper
+end

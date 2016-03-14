@@ -1,22 +1,31 @@
+ <%= render 'layouts/header' %>
+
 <h1>My Pledges</h1>
+
+<% if @pledges.length > 0 %>
 <table style = "margin-top:60px">
 
 <tr>
     <th>&nbsp;&nbsp;&nbsp;Item Name</td>
-    <th>Quantity</td>
+    <th class = "format">Quantity</td>
     <th>Proposed Delivery</td>
-    <th>Date Pledged</td>
+    <th class = "format">Date Pledged</td>
 
 </tr>
 <% @pledges.each do |pledge| %>
 
   <tr>
     <td><%= pledge.item_name %></td>
-    <td><%= pledge.quantity %></td>
+    <td class = "format"><%= pledge.quantity %></td>
     <td><%= pledge.delivery_date.strftime("%m/%d/%Y") %></td>
     <td><%= pledge.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%m/%d/%Y") %></td>
 
   </tr>
+
+<% end %>
+
+<% else %>
+<h5 style = "margin-top:60px">You currently have no pledges.<h5>
 
 <% end %>
 </table>

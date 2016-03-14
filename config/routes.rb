@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
+  ######
+  #
+  #
+  # Paths for user flow
+  #
+  #
+  ######
+  root 'organizations#index'
   get 'organizations/index'
-
   get 'organizations/show'
-
   get 'organizations/new'
-
   get 'sessions/new'
 
-  get 'signup' => 'users#new'
+  post 'users/create' => 'users#create'
+  get 'users/show' => 'users#show'
 
+  resources :users
+  resources :sessions
+
+  get 'signup' => 'users#new'
   get 'pledges' => 'pledges#index'
 
   get    'login'   => 'sessions#new', as: 'login_path'
@@ -16,17 +26,40 @@ Rails.application.routes.draw do
   get    'logout'  => 'sessions#destroy'
 
   get 'organizations' => 'organizations#index'
-
-
-
-
-
   get 'organizations/:name' => 'organizations#view'
 
   get 'pledge' => 'pledges#new'
   post 'pledge' => 'pledges#create'
 
   get 'organizations/pledges/new' => 'pledges#new'
+
+
+  ######
+  #
+  #
+  # Paths for organization flow
+  #
+  #
+  ######
+  get  'orgs/login'   => 'sessions#newOrg'
+  post 'orgs/login'   => 'sessions#createOrg'
+  get  'orgs/logout'  => 'sessions#destroyOrg'
+
+  get 'orgs/signup'   => 'organizations#new'
+  post '/organizations'  => 'organizations#create'
+
+  get 'orgs/donors' => 'users#indexForOrgs' #make sure only for orgs
+  get 'orgs/registry' => 'registry_item#itemsForOrgs'
+
+  post '/registry_items' => 'registry_item#create'
+  get '/registry_item' => 'registry_item#itemsForOrgs'
+
+  post 'orgs/donors' => 'users#filterDonors', as: 'filter'
+
+
+  post '/users/message' => 'users#message'
+
+
 
 
 
@@ -38,13 +71,6 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
-  post 'users/create' => 'users#create'
-
-  get 'users/show' => 'users#show'
-
-  resources :users
-  resources :sessions
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

@@ -1,0 +1,66 @@
+
+<%= render 'layouts/orgheader' %>
+
+  <div >
+    <h1 class = "title">Add Items to Your Registry</h1>
+
+    <div class="row">
+    <%= form_for(@item, url: registry_items_path) do |f| %>
+
+      <div class = "col-sm-4">
+      <%= f.label "item name:", :class => 'margin2' %>
+      <%= f.text_field :name, :class => 'form-control' %>
+  	  </div>
+
+  	  <div class = "col-sm-2">
+      <%= f.label "number needed:", in: 1..1000,  :class => 'margin2' %>
+      <%= f.number_field :amount_needed, :class => 'form-control' %>
+  	  </div>
+
+
+  	  <div class = "col-sm-2">
+  	  <p style = "margin-top:52px;">&nbsp;</p>
+      <%= f.submit "add", :class => 'btn btn-primary', :width=>"20px" %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
+
+<div>
+<h1 style = "margin-top:100px">Registry Items</h1>
+
+<% if @items.length > 0%>
+
+<table style = "margin-top:60px">
+
+<tr>
+    <th>&nbsp;&nbsp;&nbsp;Item Name</td>
+    <th style = "text-align:center">Needed</td>
+    <th style = "text-align:center">Pledged</td>
+    <th style = "text-align:center">Received&nbsp;&nbsp;&nbsp;</td>
+
+</tr>
+<% @items.each do |item| %>
+
+  <tr>
+    <td><p style = "margin-left:20px;margin-top:9px;"><%= item.name %></p></td>
+    <td style = "text-align:center;width:60px;"><%= item.amount_needed||=0 %></td>
+    <td style = "text-align:center"><%= item.amount_pledged||=0 %></td>
+    <td style = "text-align:center;"><%= item.amount_received||=0 %></td>
+
+  </tr>
+
+<% end %>
+
+<% else %>
+
+<h5 style = "margin-top:60px">Add registry items above</h5>
+
+<% end %>
+
+
+</table>
+
+</div>

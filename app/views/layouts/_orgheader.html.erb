@@ -1,0 +1,21 @@
+
+  <div class = "menudiv">
+
+  <ul id = "menu1" class = "menu" down = "false">
+
+    <li class = "home_link"><a href="#home">DonorRegistry Organizations</a></li>
+
+
+
+    <% if org_logged_in? %>
+       <li class = "menu"><%= link_to "Registry", orgs_registry_path %></li>
+       <li class = "menu"><%= link_to "Donors", orgs_donors_path %></li>
+       <li class = "menu"><%= link_to "Logout", orgs_logout_path %></li>
+    <% else %>
+      <li class = "menu"><%= link_to "About Us", orgs_login_path %></li>
+      <li class = "menu"><%= link_to "Sign Up", orgs_signup_path%></li>
+      <li class = "menu"><%= link_to "Login", orgs_login_path %></li>
+    <% end %>
+
+  </ul>
+</div>

@@ -1,11 +1,11 @@
-<%= render 'layouts/header' %>
-<% provide(:title, "Log in") %>
+<%= render 'layouts/orgheader' %>
 
+<% provide(:title, "Organization Log in") %>
 
 <div class="row">
   <div class="col-md-3 col-md-offset-5">
-  	<h1>Log in</h1>
-    <%= form_for(:session, url: login_path) do |f| %>
+  	<h1>Organization Log in</h1>
+    <%= form_for(:session, url: orgs_login_path) do |f| %>
 
       <%= f.label :username, class: 'margin-wrapper'%>
       <%= f.text_field :username, class: 'form-control' %>
@@ -16,6 +16,6 @@
       <%= f.submit "Log in", class: "btn btn-primary margin-wrapper" %>
     <% end %>
 
-    <p class = "margin-wrapper">New user? <%= link_to "Sign up now!", '/signup' %></p>
+    <p class = "margin-wrapper">Want to join our platform? <%= link_to "Sign up now!", '/orgs/signup' %></p>
   </div>
 </div>

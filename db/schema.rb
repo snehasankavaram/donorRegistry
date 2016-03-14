@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313044907) do
+ActiveRecord::Schema.define(version: 20160314021738) do
 
   create_table "organizations", force: true do |t|
     t.float    "lat"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20160313044907) do
     t.datetime "updated_at"
     t.string   "address_line_2"
     t.string   "phone_number"
+    t.string   "username"
+    t.string   "password"
+    t.string   "password_digest"
   end
 
   create_table "pledges", force: true do |t|
