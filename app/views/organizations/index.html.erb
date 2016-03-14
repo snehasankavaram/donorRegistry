@@ -9,7 +9,7 @@
 <div class="row" style = 'margin-top:100px;margin-bottom:100px;text-align:center;'>
 
 <% @orgs.each_with_index do |org, index| %>
-	<%img_name = "img" + ((index % 2) + 1).to_s + ".jpg" %>
+	<%img_name = "img" + ((index % 5) + 1).to_s + ".jpg" %>
 	<div class="col-sm-4" style:"text-align:center;width=200;height=200"> <%=link_to image_tag(img_name, :width=> "180px", :class=> 'card-1'), 'organizations/' + org.name + '?id=' + org.id.to_s%>
 
 		<h5 style = 'margin-top:20px;'><%=org.name%></h5>
