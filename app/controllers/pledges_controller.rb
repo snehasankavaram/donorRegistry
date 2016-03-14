@@ -9,10 +9,7 @@ class PledgesController < ApplicationController
 		@item = RegistryItem.find(params[:pledge][:id])
 		@pledge = Pledge.new(pledge_params)
 
-		date =params[:pledge][:delivery_date]
-
-		my_time_zone = "Pacific Time (US & Canada)"
-		timed_date = ActiveSupport::TimeZone[my_time_zone].parse(date + " 12:00:00")
+		date = Time.parse(params[:pledge][:delivery_date])
 
 		@pledge.update(:delivery_date => timed_date)
 
