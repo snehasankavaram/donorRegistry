@@ -9,6 +9,13 @@ class PledgesController < ApplicationController
 		@item = RegistryItem.find(params[:pledge][:id])
 		@pledge = Pledge.new(pledge_params)
 
+		date =params[:pledge][:delivery_date]
+
+		my_time_zone = "Pacific Time (US & Canada)"
+		timed_date = ActiveSupport::TimeZone[my_time_zone].parse(date + " 12:00:00")
+
+		@pledge.update(:delivery_date => timed_date)
+
 		if !user_logged_in?
 			# do nothing? TODO: fixme
 			render login_path
@@ -46,7 +53,7 @@ class PledgesController < ApplicationController
     private
 
 	    def pledge_params
-	      params.require(:pledge).permit(:quantity, :delivery_date, :item_name)
+	      params.require(:pledge).permit(:quantity, :item_name)
     end
 
 end
