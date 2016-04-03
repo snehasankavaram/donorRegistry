@@ -59,12 +59,14 @@
 
 
   <% @org.registry_items.each do |item| %>
-  	<tr>
-    	<td><%=item.name %></td>
-    	<td class = "format"><%= item.amount_needed||=0 %></td>
-    	<td class = "format"><%= item.amount_pledged||=0 %></td>
-    	<td class = "format"><%= link_to "pledge", 'pledges/new?' + 'item_id=' + item.id.to_s %></td>
-    </tr>
+    <% if item.amount_needed != 0 %>
+    	<tr>
+      	<td><%=item.name %></td>
+      	<td class = "format"><%= item.amount_needed||=0 %></td>
+      	<td class = "format"><%= item.amount_pledged||=0 %></td>
+      	<td class = "format"><%= link_to "pledge", 'pledges/new?' + 'item_id=' + item.id.to_s %></td>
+      </tr>
+    <%end%>
   <%end%>
 
 
