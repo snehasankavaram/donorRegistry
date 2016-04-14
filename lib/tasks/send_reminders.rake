@@ -10,7 +10,7 @@ task :send_reminders => :environment do
 		# address
 		# list of what you donated?
 		for pledge in pledges
-
+			puts "Sending Message"
 			org = nil
 
 			if pledge.org_id != nil
@@ -26,12 +26,14 @@ task :send_reminders => :environment do
 			message_body = "Hello! This is a reminder that you signed up to donate "+ item + " today to " + addr + " for " + org_name + ".  If you are not able to do so, please edit your pledge"
 
 			#send message to donor
-			uri = 'http://donormanage-donormanage.c9users.io/sms'
+			uri = 'https://donormanage-donormanage.c9users.io/sms'
 			#+14082210827
 			client = HTTPClient.new
 
 			# For now we will only use this within the US.
 			number = "+1" + number
+
+			puts "number"
 
 			body = { 'number' => number, 'message' => message_body}
 			res = client.post(uri, body)
@@ -51,10 +53,9 @@ task :send_reminders => :environment do
 
 			if pledge.delivery_date.strftime("%B %d, %Y") == today
 				pledges_today << pledge
-				puts "Sending Message"
 			end
 		end
-		if pledges_today != nil
+		if pledges_today != nil and pledges_today != []
 			sendReminder(pledges_today, user.phone_number)
 		end
 	end
