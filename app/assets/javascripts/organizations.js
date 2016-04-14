@@ -22,7 +22,6 @@ function initialize() {
  }
 
 ready = function() {
-  alert("here")
 
   /**!
  * easyPieChart
