@@ -10,21 +10,21 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
-
 //= require jquery
 //= require jquery_ujs
+
+//= require bootstrap
+
 //= require turbolinks
 
 //= require underscore
 //= require gmaps/google
 
-//= require bootstrap
 
 //= require best_in_place
 //= require best_in_place.jquery-ui
 
-
+//= require_tree .
 
 
 
@@ -33,6 +33,7 @@
 
 $(document).ready(function() {
   /* Activating Best In Place */
+  alert("heer")
   jQuery(".best_in_place").best_in_place();
 });
 
