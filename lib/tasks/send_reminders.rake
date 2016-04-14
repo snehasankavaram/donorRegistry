@@ -4,7 +4,6 @@ task :send_reminders => :environment do
 	# For now we will only deal with pacific time.
 
 	Time.zone = "Pacific Time (US & Canada)"
-
 	today = Time.zone.now.strftime("%B %d, %Y")
 
 	def sendReminder (pledges, number)
@@ -45,6 +44,12 @@ task :send_reminders => :environment do
 	for user in User.all
 		for pledge in user.pledges
 			pledges_today = []
+			puts "Date"
+			puts pledge.delivery_date.strftime("%B %d, %Y")
+			puts "Today"
+			puts today
+			puts " "
+
 			if pledge.delivery_date.strftime("%B %d, %Y") == today
 				pledges_today << pledge
 				puts "Sending Message"
@@ -53,9 +58,8 @@ task :send_reminders => :environment do
 		if pledges_today != nil
 			sendReminder(pledges_today, user.phone_number)
 		end
-
-		puts "Finished Script"
 	end
+	puts "Finished Script"
 
 end
 
