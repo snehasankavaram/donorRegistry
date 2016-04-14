@@ -8,6 +8,8 @@ class RegistryItemController < ApplicationController
 	def create
 		@item = RegistryItem.new(reg_params)
 		@item.update(:amount_received => 0)
+		@item.update(:amount_pledged => 0)
+
 		current_org.registry_items << @item
 		@item.save
 		redirect_to orgs_registry_path
