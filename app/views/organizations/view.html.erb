@@ -1,5 +1,7 @@
 <!-- View for Donors to See Organiation -->
 
+
+
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmvJ9enZrdIcZfNQxj8c-FA1eTqKPrDtk&callback=initialize" type="text/javascript"></script>
 
 
@@ -11,69 +13,78 @@
 
 
 
-<div class = "margin">
 
-  <div id="map" style='width: 400px; height: 400px;'></div>
+
+<div class = "margin left" style = "margin-top:20px; margin-right:20px">
+
+  <!-- MAP -->
+
+  <div id="map" style='width: 400px; height: 300px;margin-right:50px;'></div>
+
+  <!-- MAP -->
+
+  <div style = "width: 400px;height:80px;">
+    <div class = "info left">
+
+      <div class = "one">
+      <%= image_tag "gps.png",  height: '32', width: '32' %>
+      </div>
+
+      <div class = "two">
+      <p ><%=@org.address%><br><%=@org.address_line_2||="Berkeley, CA 94709"%></p>
+      </div>
+    </div>
+
+    <div class = "info right" style = "margin-top:35px; margin-left: 20px">
+      <div class = "one" style = "margin-left:45px">
+      <%= image_tag "telephone.png", height: '32', width: '32' %>
+      </div>
+
+      <div class = "two">
+      <p ><%= number_to_phone(@org.phone_number) %></p>
+
+      </div>
+     </div>
+
+ </div>
+
+
+
+
+
 </div>
 
-<div >
-  <h1 style = 'margin-top:60px;'>About</h1>
-  <h5><%=@org.about%></h5>
-</div>
-
-<div class = "info">
-
-  <div class = "one">
-  <%= image_tag "gps.png",  height: '32', width: '32' %>
-  </div>
-
-  <div class = "two">
-  <p class = "margin"><%=@org.address%><br><%=@org.address_line_2||="Berkeley, CA 94709"%></p>
-  </div>
-
-  <div class = "one" >
-  <%= image_tag "telephone.png", height: '32', width: '32' %>
-  </div>
-
-  <div class = "two">
-  <p ><%=@org.phone_number||="409-870-8888"%></p>
-
-  </div>
-
-</div>
-
-<h1 class = "margin" style = 'margin-top:100px;'>Registry Items</h1>
-
-<% if @org.registry_items.length > 0%>
-
-<div class = "row">
-
-<table class = "flat-table" >
-  <tr>
-    <th>&nbsp;&nbsp;&nbsp;Item</th>
-    <th class = "format">Needed</th>
-    <th class = "format">Pledged</th>
-    <th></th>
-  </tr>
+<div class = "right" style = "padding-bottom:30px; padding-top:2px;">
+  <h1 style = 'margin-top:20px;margin-bottom: 50px;'>Needed Items</h1>
 
 
-
-  <% @org.registry_items.each do |item| %>
-    <% if item.amount_needed != 0 %>
-    	<tr>
-      	<td><%=item.name %></td>
-      	<td class = "format"><%= item.amount_needed||=0 %></td>
-      	<td class = "format"><%= item.amount_pledged||=0 %></td>
-      	<td class = "format"><%= link_to "pledge", 'pledges/new?' + 'item_id=' + item.id.to_s %></td>
-      </tr>
-    <%end%>
-  <%end%>
+  <% if @org.registry_items.length > 0%>
+  <div class = "row circle">
 
 
+      <% @org.registry_items.each do |item| %>
+        <% if item.amount_needed != 0 %>
 
-</table>
+           <% @percent = ((item.amount_pledged||=0) * 100.0 / (item.amount_pledged + item.amount_needed)).to_s%>
+           <li class="chart circle" data-percent=<%= @percent%> id = <%='item_id=' + item.id.to_s + '&org_id=' + @org.id.to_s %> >
+
+            <span><%= item.amount_needed%></span>Needed
+
+            <p style = "margin-top:35px; font-size:20px;"><%=item.name%></p>
+
+
+          </li>
+
+
+        <%end%>
+      <%end%>
+    </div>
 
 </div>
+
+
+
+
 
 <%else%>
   <h5 style = "margin-top:60px">This organization currently has no registry items.  Check back later!<h5>
@@ -83,8 +94,13 @@
 <%= hidden_field_tag "lon", :value => @org.lon, :id=>"lon" %>
 
 
+<h1 style = "margin-bottom:40px">About this Drive</h1>
+
+<h5 style = "margin-right:20%"><%=@org.about%></h5>
 
 </html>
+
+
 
 <script>
       //{:value=>37.325386, :id=>"lat"}

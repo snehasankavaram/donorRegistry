@@ -1,0 +1,18 @@
+
+
+.column{
+	font-size: 7px;
+}
+
+.num_column input {
+	width: 60px;
+}
+
+tr.trash img {
+	visibility: hidden;
+}
+
+tr.trash:hover img {
+	visibility: visible;
+}
+

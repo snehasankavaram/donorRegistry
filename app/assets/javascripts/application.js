@@ -13,13 +13,28 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+
+//= require underscore
+//= require gmaps/google
+
 //= require bootstrap
 
-//= require underscore
-//= require gmaps/google
 
-//= require underscore
-//= require gmaps/google
+
+//= require best_in_place
+//= require best_in_place.jquery-ui
+
+
+//= require_tree .
+
+
+
+
+
+
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
 
 

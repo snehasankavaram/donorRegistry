@@ -1,33 +1,52 @@
 <%= render 'layouts/header' %>
 
-<h1 style = 'margin-left:6%;'>Communities</h1>
+<h1 style = 'margin-left:6%;text-align:center'>Give to a Cause</h1>
 
 <div>
 
+<% @links = ["https://i.ytimg.com/vi/zQYe3ngG6qs/maxresdefault.jpg",
+			"http://dailysignal.com/wp-content/uploads/rtrlsix867107.jpg",
+			"http://free-islamic-course.org/wp-content/uploads/2014/01/tornado.jpg",
+			"http://assets.nydailynews.com/polopoly_fs/1.15871.1314097551!/img/httpImage/image.jpg_gen/derivatives/gallery_1200/gal-earthquack-japan-2-jpg.jpg",
+			"http://s3.amazonaws.com/assets.prod.vetstreet.com/e3/f5aa809b8111e192b2005056ad4734/file/natural%20disaster.jpg",
+			"http://pad3.whstatic.com/images/thumb/b/b6/Prepare-a-Company-for-a-Natural-Disaster-Step-1.jpg/aid1328564-728px-Prepare-a-Company-for-a-Natural-Disaster-Step-1.jpg"] %>
+
+<% @disaster_names = ["Tsunami Relief",
+			"Flood Drive",
+			"Tornado Aftermath",
+			"Earthquake and Fire Relief",
+			"Santa Clara Storm",
+			"Flood Relief"] %>
+
+<div id="wrapper">
+	<div id="columns">
+		<% @orgs.each_with_index do |org, index| %>
 
 
-<div class="row" style = 'margin-top:100px;margin-bottom:100px;text-align:center;'>
+			<div class="pin">
 
-<% @orgs.each_with_index do |org, index| %>
-	<%img_name = "img" + ((index % 5) + 1).to_s + ".jpg" %>
-	<div class="col-sm-4" style:"text-align:center;width=200;height=200"> <%=link_to image_tag(img_name, :width=> "180px", :class=> 'card-1'), 'organizations/' + org.name + '?id=' + org.id.to_s%>
+				<img src=<%= @links[index % 6] %>>
+				</img>
 
-		<h5 style = 'margin-top:20px;'><%=org.name%></h5>
+
+				<h5><%= @disaster_names[index % 6] %></h5>
+
+				<h6><%=org.name%></h6>
+				<p>
+					<%=org.about.truncate(200) + "..." %>
+
+				</p>
+
+				<%=link_to "donate", 'organizations/' + org.name + '?id=' + org.id.to_s, {:style=>'color:blue;text-align:center', :class => "org_link"} %>
+			</div>
+
+		<% end %>
 
 
 	</div>
-
-	<% if index + 1 % 3 == 0 %>
-		</div>
-		<div class="row" style = 'margin-top:100px;margin-bottom:100px;'>
-	<% end%>
-
-<% end %>
-
-<% if @orgs.count + 1 % 3 != 0 %>
-	</div>
-<% end %>
-
 </div>
+
+
+
 
 

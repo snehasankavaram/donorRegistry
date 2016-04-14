@@ -12,13 +12,13 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-img {
+/*img {
   border:1px solid white;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-
+*/
 
 .flat-table {
   display: block;
@@ -73,9 +73,13 @@ html{
 th {
   text-align: center;
   font-size: 16px;
+
+  font-family: 'Open Sans';
+  font-weight: lighter;
+
   height: 40px;
-  background-color: #4CD964;
-  color: white;
+  background-color: #E7F7F5;
+  color: gray;
   font-weight: lighter;
   padding: 20px 30px;
 }
@@ -90,3 +94,186 @@ tr:hover {
   background-color: #F7F7F7;
   color: blue;
 }
+
+
+/* Codepenz circle UI */
+
+@import "lesshat";
+
+
+.circle body{
+  min-height: 100%;
+  position: relative;
+  text-align: center;
+  padding-top: 100px;
+  color: #E7F7F5;
+  font-family: 'Helvetica Neue', 'Arial';
+  font-weight: 100;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+a {
+  display: block;
+  margin-bottom: 1em;
+  color: #E7F7F5;
+  text-decoration: none;
+  &:last-of-type{
+    font-size: 0.9em;
+  }
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+ul{
+  margin-bottom: 4em;
+}
+
+.chart{
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  margin: 0 10px;
+
+  margin-right: 40px;
+  vertical-align: top;
+  position: relative;
+ .box-sizing(border-box);
+  padding-top: 22px;
+  text-align: center;
+}
+
+span{
+  display: block;
+  font-size: 2em;
+  font-weight: normal;
+}
+
+@keyframes example {
+    from {color: black;}
+    to {color: #148C7F;}
+}
+
+
+.circle li:hover {
+  cursor: pointer;
+  animation-name: example;
+  animation-duration: 0.45s;
+  color: #148C7F;
+}
+
+canvas{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.chart li:hover {
+
+}
+
+.left {
+  position: relative;
+  float: left;
+}
+
+.relative {
+  position: relative;
+  float: right;
+}
+
+
+/* Pinterest Style Cards Layout */
+
+#wrapper {
+  width: 90%;
+  max-width: 1200px;
+  min-width: 800px;
+  margin: 50px auto;
+}
+
+#columns {
+  -webkit-column-count: 3;
+  -webkit-column-gap: 60px;
+  -webkit-column-fill: auto;
+  -moz-column-count: 3;
+  -moz-column-gap: 60px;
+  -moz-column-fill: auto;
+  column-count: 3;
+  column-gap: 60px;
+  column-fill: auto;
+}
+
+.pin {
+  display: inline-block;
+  background: #FEFEFE;
+  border: 2px solid #FAFAFA;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  margin: 0 0px 60px;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
+
+  padding-bottom: 5px;
+  background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+  opacity: 1;
+
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.pin h5 {
+  text-align: center;
+}
+
+.pin h6 {
+  text-align: center;
+}
+
+.pin img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.pin p {
+  font: 12px/18px Arial, sans-serif;
+  color: #333;
+  margin: 10px;
+}
+
+@media (min-width: 960px) {
+  #columns {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1100px) {
+  #columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
+
+
+.round {
+  width:50px;
+  height: 50px;
+  background: black;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+}
+
+.org_link {
+  color: blue;
+}
+
+
+
+

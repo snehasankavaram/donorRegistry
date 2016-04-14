@@ -30,25 +30,34 @@
 
 <div>
 <h1 style = "margin-top:100px">Registry Items</h1>
+<h5 class = "margin" style = 'margin-top:20px;'>Click on a field to edit.</h5>
+
 
 <% if @items.length > 0%>
 
-<table style = "margin-top:60px">
+<table style = "margin-top:60px; width:90%">
 
 <tr>
-    <th>&nbsp;&nbsp;&nbsp;Item Name</td>
+    <th>&nbsp;&nbsp;&nbsp;Item</td>
     <th style = "text-align:center">Needed</td>
     <th style = "text-align:center">Pledged</td>
-    <th style = "text-align:center">Received&nbsp;&nbsp;&nbsp;</td>
+    <th style = "text-align:center">Received</td>
+    <th style = "text-align:center">&nbsp;&nbsp;&nbsp;</td>
 
 </tr>
 <% @items.each do |item| %>
 
-  <tr>
-    <td><p style = "margin-left:20px;margin-top:9px;"><%= item.name %></p></td>
-    <td style = "text-align:center;width:60px;"><%= item.amount_needed||=0 %></td>
-    <td style = "text-align:center"><%= item.amount_pledged||=0 %></td>
-    <td style = "text-align:center;"><%= item.amount_received||=0 %></td>
+  <tr class = "trash">
+    <td class = "column"><p style = "margin-left:10px;margin-top:9px;"><%= best_in_place item, :name, :place_holder => "click to edit"%></p></td>
+
+    <td class = "column num_column" style = "text-align:center;width:60px;"><%= best_in_place item, :amount_needed, :place_holder => 0%></td>
+    <td class = "column num_column" style = "text-align:center;width:60px;"><%= best_in_place item, :amount_pledged, :place_holder => 0%></td>
+
+    <td class = "column num_column" style = "text-align:center;width:60px;"><%= best_in_place item, :amount_received, :place_holder => 0%></td>
+
+    <td style = "text-align:center;width:60px;" class = "column num_column delete" id = <%= item.id %>>
+     <%= image_tag "delete.png"%>
+    </td>
 
   </tr>
 
@@ -62,5 +71,7 @@
 
 
 </table>
+
+
 
 </div>

@@ -1,3 +1,7 @@
+require 'action_view'
+include ActionView::Helpers::NumberHelper
+include ActionView::Helpers::TextHelper
+
 class OrganizationsController < ApplicationController
   def index
   	@orgs = Organization.all

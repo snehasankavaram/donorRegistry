@@ -8,13 +8,19 @@
 
 
     <% if org_logged_in? %>
+       <li class = "menu" style = "margin-left:50px;"><%= link_to "Logout", orgs_logout_path %></li>
+
+       <li class = "menu"><%= link_to "Contact Donors", orgs_donors_path %></li>
+
+       <li class = "menu" ><%= link_to "Pledges", orgs_pledges_path %></li>
        <li class = "menu"><%= link_to "Registry", orgs_registry_path %></li>
-       <li style = "margin-left:1px" class = "menu"><%= link_to "Contact Donors", orgs_donors_path %></li>
-       <li style = "margin-left:50px" class = "menu"><%= link_to "Logout", orgs_logout_path %></li>
+
     <% else %>
-      <li class = "menu"><%= link_to "About Us", orgs_login_path %></li>
-      <li class = "menu"><%= link_to "Sign Up", orgs_signup_path%></li>
       <li class = "menu"><%= link_to "Login", orgs_login_path %></li>
+      <li class = "menu"><%= link_to "Sign Up", orgs_signup_path%></li>
+      <li class = "menu"><%= link_to "About Us", orgs_login_path %></li>
+
+
     <% end %>
 
   </ul>

@@ -15,6 +15,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'gmaps4rails'
 gem 'underscore-rails'
 
+
+
+gem 'best_in_place', github: 'bernat/best_in_place'
+gem 'fuzzy-string-match'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'spring'

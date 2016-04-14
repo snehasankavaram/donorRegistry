@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   #
   #
   ######
+
+
+  scope defaults: { format: 'json' } do
+    resources :registry_item, only: [:update]
+    resources :pledges, only: [:update]
+  end
+
   root 'organizations#index'
   get 'organizations/index'
   get 'organizations/show'
@@ -19,7 +26,9 @@ Rails.application.routes.draw do
   resources :sessions
 
   get 'signup' => 'users#new'
-  get 'pledges' => 'pledges#index'
+  get 'pledges' => 'pledges#index_for_donor'
+
+  get 'orgs/pledges' => 'pledges#index_for_org'
 
   get    'login'   => 'sessions#new', as: 'login_path'
   post   'login'   => 'sessions#create'
@@ -32,6 +41,8 @@ Rails.application.routes.draw do
   post 'pledge' => 'pledges#create'
 
   get 'organizations/pledges/new' => 'pledges#new'
+
+  post 'registry_item/delete' => 'registry_item#delete'
 
 
   ######
@@ -59,6 +70,11 @@ Rails.application.routes.draw do
 
   post '/users/message' => 'users#message'
 
+  put '/registry_item' => 'registry_item#update'
+  put '/pledge' => 'pledges#update'
+  post '/pledge/mark_fulfilled' => 'pledges#mark_fulfilled'
+
+  get '/pledge/search' => 'pledges#search'
 
 
 

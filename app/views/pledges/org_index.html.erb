@@ -1,0 +1,87 @@
+<%= render 'layouts/orgheader' %>
+
+
+<div>
+
+
+  <h1 class = "title">Donor Pledges</h1>
+
+
+  <div class="row" style = "margin-top:50px">
+    <%= form_tag("/pledge/search", method: "get") do %>
+   <!--    <div class = "col-sm-2">
+      <%= label_tag(:q, "Search for:") %>
+      </div>
+ -->
+      <div class = "col-sm-4">
+      <%= text_field_tag(:q) %>
+      </div>
+
+      <div class = "col-sm-2">
+      <%= submit_tag("Search", :class => "btn btn-primary", :style => "height:30px;font-size: 13px;width:100px;") %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <% if @pledges.length > 0%>
+
+  <table style = "margin-top:60px; width:90%;">
+
+  <tr>
+      <th>&nbsp;&nbsp;&nbsp;Date</td>
+      <th >Pledged By</td>
+      <th >Pledge Status</td>
+      <th>Item</td>
+      <th style = "text-align:center">Quantity</td>
+      <th style = "text-align:center">&nbsp;&nbsp;&nbsp;</td>
+
+  </tr>
+  <% @pledges.each do |pledge| %>
+
+  <% if RegistryItem.where(id: pledge.registry_item_id) != []%>
+
+    <tr class = "trash" >
+      <td class = "pledge-column" style = "margin-left:20px;margin-top:9px;"><%= pledge.delivery_date.strftime("%B %d, %Y") %></td>
+
+      <td class = "pledge-column" style = "margin-left:10px;margin-top:9px;"><%=User.find(pledge.user_id).name%></td>
+
+      <td class = "pledge-column pledge-num_column" style = ""><%= pledge.fulfilled == true ? "completed" : "In progress"%></td>
+
+
+      <% @items = []%>
+      <% for choice in Organization.find(pledge.org_id).registry_items do%>
+      <% @items << choice.name %>
+      <% end %>
+
+      <td class = "pledge-column pledge-num_column" style = ""><%= RegistryItem.find(pledge.registry_item_id).name %></td>
+
+      <td class = "edit-column pledge-num_column" style = "text-align:center;width:60px;"><%= best_in_place pledge, :quantity%></td>
+
+
+      <% if  pledge.fulfilled != true %>
+
+        <td style = "text-align:center;width:60px;" class = "pledge-column pledge-num_column mark-fulfilled" id = <%= pledge.id %>>
+         <%= image_tag "check.png"%>
+        </td>
+
+      <% else %>
+         <td style = "text-align:center;width:60px;" class = "pledge-column pledge-num_column">
+         </td>
+      <%end%>
+
+    </tr>
+  <%end%>
+  <% end %>
+
+  <% else %>
+
+  <h5 style = "margin-top:60px">No Pledges Available</h5>
+
+  <% end %>
+
+
+  </table>
+
+</div>

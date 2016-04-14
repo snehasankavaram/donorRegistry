@@ -19,6 +19,8 @@
       <%= f.label :delivery_date, :class => 'first_field' %>
       <%= f.date_field :delivery_date, :value => Time.now.in_time_zone("Pacific Time (US & Canada)").strftime('%Y-%m-%d'),:class => 'form-control' %>
 
+      <%= f.hidden_field :org_id, :value => @org_id%>
+
       <%= f.submit "pledge", :class => 'btn btn-primary first_field'%>
     <% end %>
   </div>

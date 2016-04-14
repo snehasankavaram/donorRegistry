@@ -16,10 +16,103 @@
       <%= f.label "Organization Name", :class => 'first_field' %>
       <%= f.text_field :name, :class => 'form-control' %>
 
+      <%= f.label "Link to Website (optional)", :class => 'first_field' %>
+      <%= f.text_field :link, :class => 'form-control' %>
+
+      <!-- Hours -->
+
+      <h4 class = 'first_field header'>Open Hours</h4>
+
+       <div class="row" >
+
+
+        <div class="col-sm-4" style:"width=200;height=200">
+
+          <h4 class = 'first_field header'>Sunday</h4>
+
+          <%= f.label "open", :class => 'first_field' %>
+          <%= f.time_field :sun_open, :class => 'form-control' %>
+
+          <%= f.label "close", :class => 'first_field' %>
+          <%= f.time_field :sun_close, :class => 'form-control' %>
+
+        </div>
+
+        <div class="col-sm-4" style:"width=200;height=200">
+          <h4 class = 'first_field header'>Monday</h4>
+
+          <%= f.label "open", :class => 'first_field' %>
+          <%= f.time_field :mon_open, :class => 'form-control' %>
+
+          <%= f.label "close", :class => 'first_field' %>
+          <%= f.time_field :mon_close, :class => 'form-control' %>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;height=200">
+          <h4 class = 'first_field header'>Tuesday</h4>
+
+            <%= f.label "open", :class => 'first_field' %>
+            <%= f.time_field :tues_open, :class => 'form-control' %>
+
+            <%= f.label "close", :class => 'first_field' %>
+            <%= f.time_field :tues_close, :class => 'form-control' %>
+        </div>
+
+      </div>
+
+      <div class="row" style = 'margin-bottom:100px;'>
+
+
+
+        <div class="col-sm-4" style:"width=200;height=200">
+
+            <h4 class = 'first_field header'>Wednesday</h4>
+
+            <%= f.label "open", :class => 'first_field' %>
+            <%= f.time_field :wed_open, :class => 'form-control' %>
+
+            <%= f.label "close", :class => 'first_field' %>
+            <%= f.time_field :wed_close, :class => 'form-control' %>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;height=200">
+            <h4 class = 'first_field header'>Thursday</h4>
+
+            <%= f.label "open", :class => 'first_field' %>
+            <%= f.time_field :thurs_open, :class => 'form-control' %>
+
+            <%= f.label "close", :class => 'first_field' %>
+            <%= f.time_field :thurs_close, :class => 'form-control' %>
+
+        </div>
+        <div class="col-sm-4" style:"width=200;height=200">
+            <h4 class = 'first_field header'>Friday</h4>
+
+            <%= f.label "open", :class => 'first_field' %>
+            <%= f.time_field :fri_open, :class => 'form-control' %>
+
+            <%= f.label "close", :class => 'first_field' %>
+            <%= f.time_field :fri_close, :class => 'form-control' %>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;height=200">
+             <h4 class = 'first_field header'>Saturday</h4>
+
+            <%= f.label "open", :class => 'first_field' %>
+            <%= f.time_field :sat_open, :class => 'form-control' %>
+
+            <%= f.label "close", :class => 'first_field' %>
+            <%= f.time_field :sat_close, :class => 'form-control' %>
+        </div>
+      </div>
+
+
+
+
 
 
       <%= f.label :phone_number, :class => 'first_field' %>
-      <%= f.text_field :phone_number, :class => 'form-control' %>
+      <%= f.telephone_field :phone_number, :class => 'form-control' %>
 
 
       <%= f.label "Address", :class => 'first_field' %>

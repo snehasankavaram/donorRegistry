@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314021738) do
+ActiveRecord::Schema.define(version: 20160413085209) do
 
   create_table "organizations", force: true do |t|
     t.float    "lat"
@@ -26,6 +26,21 @@ ActiveRecord::Schema.define(version: 20160314021738) do
     t.string   "username"
     t.string   "password"
     t.string   "password_digest"
+    t.string   "link"
+    t.time     "sun_open"
+    t.time     "sun_close"
+    t.time     "mon_open"
+    t.time     "mon_close"
+    t.time     "tues_open"
+    t.time     "tues_close"
+    t.time     "wed_open"
+    t.time     "wed_close"
+    t.time     "thurs_open"
+    t.time     "thurs_close"
+    t.time     "fri_open"
+    t.time     "fri_close"
+    t.time     "sat_open"
+    t.time     "sat_close"
   end
 
   create_table "pledges", force: true do |t|
@@ -37,6 +52,9 @@ ActiveRecord::Schema.define(version: 20160314021738) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "org_id"
+    t.integer  "registry_item_id"
+    t.boolean  "item_deleted"
   end
 
   add_index "pledges", ["user_id"], name: "index_pledges_on_user_id"
