@@ -139,7 +139,6 @@ ul{
   margin-right: 40px;
   vertical-align: top;
   position: relative;
- .box-sizing(border-box);
   padding-top: 22px;
   text-align: center;
 }
