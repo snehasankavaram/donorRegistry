@@ -98,9 +98,6 @@ tr:hover {
 
 /* Codepenz circle UI */
 
-@import "lesshat";
-
-
 .circle body{
   min-height: 100%;
   position: relative;
