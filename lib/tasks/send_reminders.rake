@@ -47,11 +47,14 @@ task :send_reminders => :environment do
 			pledges_today = []
 			if pledge.delivery_date.strftime("%B %d, %Y") == today
 				pledges_today << pledge
+				puts "Sending Message"
 			end
 		end
 		if pledges_today != nil
 			sendReminder(pledges_today, user.phone_number)
 		end
+
+		puts "Finished Script"
 	end
 
 end
