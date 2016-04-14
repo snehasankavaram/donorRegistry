@@ -3,8 +3,7 @@ task :send_reminders => :environment do
 
 	# For now we will only deal with pacific time.
 
-	Time.zone = "Pacific Time (US & Canada)"
-	today = Time.zone.now.strftime("%B %d, %Y")
+	today = Time.now.strftime("%B %d, %Y")
 
 	def sendReminder (pledges, number)
 		# org name
