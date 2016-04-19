@@ -48,6 +48,11 @@ class PledgesController < ApplicationController
 		@item.save
 	end
 
+	def delete
+		Pledge.find(params[:id]).delete
+		redirect_to :back
+	end
+
 	def create
 		@item = RegistryItem.find(params[:pledge][:id])
 		@pledge = Pledge.new(pledge_params)

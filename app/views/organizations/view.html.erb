@@ -9,8 +9,8 @@
 
  <%= render 'layouts/header' %>
 
-<h1><%=@org.name%></h1>
-
+<h1><%=@drive.name%></h1>
+<h2 style = "margin-top:20px; margin-bottom:20px; color: rgb(0, 179, 179)"><%=@org.name%></h2>
 
 
 
@@ -45,11 +45,7 @@
 
       </div>
      </div>
-
  </div>
-
-
-
 
 
 </div>
@@ -93,8 +89,42 @@
 <%= hidden_field_tag "lat", :value => @org.lat, :id=>"lat" %>
 <%= hidden_field_tag "lon", :value => @org.lon, :id=>"lon" %>
 
+   <!-- Hours -->
+   <h2>Drop off Hours</h2>
+    <div>
+      <% if @org.mon_open != nil and @org.mon_close != nil%>
+        <h6 style = "margin-top:40px"> <%= "Monday: " + @org.mon_open.strftime("%I:%M%p") + " to " + @org.mon_close.strftime("%I:%M%p") %></h6>
+      <%end%>
 
-<h1 style = "margin-bottom:40px;margin-top:40px">About this Drive</h1>
+      <% if @org.tues_open != nil and @org.tues_close != nil%>
+        <h6 style = "margin-top:0px"> <%= "Tuesday: " + @org.tues_open.strftime("%I:%M%p") + " to " + @org.tues_close.strftime("%I:%M%p") %></h6>
+      <%end%>
+
+      <% if @org.wed_open != nil and @org.wed_close != nil%>
+        <h6> <%= "Wednesday: " + @org.wed_open.strftime("%I:%M%p") + " to " + @org.wed_close.strftime("%I:%M%p") %></h6>
+      <%end%>
+
+      <% if @org.thurs_open != nil and @org.thurs_close != nil%>
+        <h6> <%= "Thursday: " + @org.thurs_open.strftime("%I:%M%p") + " to " + @org.thurs_close.strftime("%I:%M%p") %></h6>
+      <%end%>
+
+      <% if @org.fri_open != nil and @org.fri_close != nil%>
+        <h6> <%= "Friday: " + @org.fri_open.strftime("%I:%M%p") + " to " + @org.fri_close.strftime("%I:%M%p") %></h6>
+      <%end%>
+
+      <% if @org.sat_open != nil and @org.sat_close != nil%>
+        <h6> <%= "Saturday: " + @org.sat_open.strftime("%I:%M%p") + " to " + @org.sat_close.strftime("%I:%M%p") %></h6>
+      <%end%>
+
+      <% if @org.sun_open != nil and @org.sun_close != nil%>
+        <h6> <%= "Sunday: " + @org.sun_open.strftime("%I:%M%p") + " to " + @org.sun_close.strftime("%I:%M%p") %></h6>
+      <%end%>
+
+    </div>
+<h2 style = "margin-bottom:40px;margin-top:80px">About</h2>
+
+<h5 style = "margin-right:20%; margin-bottom:40px"><%=@drive.about%></h5>
+
 
 <h5 style = "margin-right:20%"><%=@org.about%></h5>
 

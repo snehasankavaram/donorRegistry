@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413085209) do
+ActiveRecord::Schema.define(version: 20160416101005) do
+
+  create_table "drives", force: true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "state"
+    t.text     "about"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "organizations", force: true do |t|
     t.float    "lat"
@@ -41,7 +50,10 @@ ActiveRecord::Schema.define(version: 20160413085209) do
     t.time     "fri_close"
     t.time     "sat_open"
     t.time     "sat_close"
+    t.integer  "drive_id"
   end
+
+  add_index "organizations", ["drive_id"], name: "index_organizations_on_drive_id"
 
   create_table "pledges", force: true do |t|
     t.string   "item_name"

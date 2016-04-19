@@ -21,6 +21,31 @@ ready = function() {
 		}
 
 	});
+
+	$( ".delete-pledge" ).click(function() {
+		var r = confirm("Are you sure you want to delete this pledge?");
+		if (r == true) {
+		    var targetId = $( this ).attr('id');
+			// alert( "Handler for .click() called. " + targetId );
+
+			var url = window.location;
+			var requestUrl = url .protocol + "//" + url.host + "/pledge/delete"
+
+
+			// make delete request
+
+			$.post( requestUrl , { id: targetId } );
+			// $.ajax({
+			//   type: "POST",
+			//   url: requestUrl,
+			//   data: data,
+			//   success: success,
+			//   dataType: ''
+			// });
+			location.reload();
+		}
+
+	});
 }
 
 

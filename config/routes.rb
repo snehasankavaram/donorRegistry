@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   get 'pledge' => 'pledges#new'
   post 'pledge' => 'pledges#create'
+  post 'pledge/delete' => 'pledges#delete'
 
   get 'organizations/pledges/new' => 'pledges#new'
 

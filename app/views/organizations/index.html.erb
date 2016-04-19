@@ -22,18 +22,19 @@
 	<div id="columns">
 		<% @orgs.each_with_index do |org, index| %>
 
-
+			<% @drive = Drive.find(org.drive_id) %>
 			<div class="pin">
 
 				<img src=<%= @links[index % 6] %>>
 				</img>
 
 
-				<h5><%= @disaster_names[index % 6] %></h5>
+				<h5><%= @drive.name %></h5>
+				<h6><%=(@drive.city||="Cupertino") + ", " + (@drive.state||="CA")%></h6>
 
-				<h6><%=org.name%></h6>
+				<!-- <p><%=org.name%></p> -->
 				<p>
-					<%=org.about.truncate(200) + "..." %>
+					<%=@drive.about.truncate(200) + "..." %>
 
 				</p>
 

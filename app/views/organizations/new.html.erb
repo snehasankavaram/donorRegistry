@@ -8,7 +8,7 @@
 <div class="row">
 
   <div class="col-md-5 col-md-offset-4">
-    <h1 class = "title">Hello! Sign up to Join Our Platform!</h1>
+    <h1 class = "title">Join Our Platform</h1>
     <%= form_for(@org) do |f| %>
 
       <h4 class = 'first_field header'>Organization Info</h4>
@@ -19,93 +19,146 @@
       <%= f.label "Link to Website (optional)", :class => 'first_field' %>
       <%= f.text_field :link, :class => 'form-control' %>
 
+      <!-- Drive -->
+      <h4 class = 'first_field header'>Drive</h4>
+
+      <%= f.fields_for :drives do |drives_form| %>
+        <!-- <p>Choose Existing</p>
+       <%= drives_form.collection_select :name, Drive.order(:name),:id,:name, include_blank: true, :class =>'form-control' %> -->
+
+       <p style = "margin-top:20px">Information about the cause you are collecting for.</p>
+       <%= f.label :name, :class => 'first_field' %>
+       <%= drives_form.text_field :name, :class =>'form-control' %>
+
+       <%= f.label :city, :class => 'first_field' %>
+       <%= drives_form.text_field :name, :class =>'form-control' %>
+
+       <%= f.label :state, :class => 'first_field' %>
+       <%= drives_form.text_field :name, :class =>'form-control' %>
+
+       <%= f.label :about, :class => 'first_field' %>
+       <%= drives_form.text_area :about, :class =>'form-control' %>
+
+
+      <%end%>
+
       <!-- Hours -->
 
-      <h4 class = 'first_field header'>Open Hours</h4>
+      <h4 class = 'first_field header'>Donation Drop Off Hours</h4>
 
        <div class="row" >
 
-
-        <div class="col-sm-4" style:"width=200;height=200">
-
-          <h4 class = 'first_field header'>Sunday</h4>
-
-          <%= f.label "open", :class => 'first_field' %>
-          <%= f.time_field :sun_open, :class => 'form-control' %>
-
-          <%= f.label "close", :class => 'first_field' %>
-          <%= f.time_field :sun_close, :class => 'form-control' %>
-
+        <div class="col-sm-4" style:"width=200;">
+          <p class = 'first_field header'>Sunday</p>
         </div>
 
-        <div class="col-sm-4" style:"width=200;height=200">
-          <h4 class = 'first_field header'>Monday</h4>
-
+        <div class="col-sm-4" style:"width=200;">
           <%= f.label "open", :class => 'first_field' %>
-          <%= f.time_field :mon_open, :class => 'form-control' %>
-
-          <%= f.label "close", :class => 'first_field' %>
-          <%= f.time_field :mon_close, :class => 'form-control' %>
+          <%= f.time_field :sun_open, :class => 'form-control', :style =>"height:25px", :style =>"height:25px"%>
         </div>
 
-        <div class="col-sm-4" style:"width=200;height=200">
-          <h4 class = 'first_field header'>Tuesday</h4>
-
-            <%= f.label "open", :class => 'first_field' %>
-            <%= f.time_field :tues_open, :class => 'form-control' %>
-
-            <%= f.label "close", :class => 'first_field' %>
-            <%= f.time_field :tues_close, :class => 'form-control' %>
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label "close", :class => 'first_field' %>
+          <%= f.time_field :sun_close, :class => 'form-control', :style =>"height:25px" %>
         </div>
 
       </div>
 
-      <div class="row" style = 'margin-bottom:100px;'>
-
-
-
-        <div class="col-sm-4" style:"width=200;height=200">
-
-            <h4 class = 'first_field header'>Wednesday</h4>
-
-            <%= f.label "open", :class => 'first_field' %>
-            <%= f.time_field :wed_open, :class => 'form-control' %>
-
-            <%= f.label "close", :class => 'first_field' %>
-            <%= f.time_field :wed_close, :class => 'form-control' %>
+      <div class="row" >
+        <div class="col-sm-4" style:"width=200;">
+          <p class = 'first_field header'>Monday</p>
         </div>
 
-        <div class="col-sm-4" style:"width=200;height=200">
-            <h4 class = 'first_field header'>Thursday</h4>
-
-            <%= f.label "open", :class => 'first_field' %>
-            <%= f.time_field :thurs_open, :class => 'form-control' %>
-
-            <%= f.label "close", :class => 'first_field' %>
-            <%= f.time_field :thurs_close, :class => 'form-control' %>
-
-        </div>
-        <div class="col-sm-4" style:"width=200;height=200">
-            <h4 class = 'first_field header'>Friday</h4>
-
-            <%= f.label "open", :class => 'first_field' %>
-            <%= f.time_field :fri_open, :class => 'form-control' %>
-
-            <%= f.label "close", :class => 'first_field' %>
-            <%= f.time_field :fri_close, :class => 'form-control' %>
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :mon_open, :class => 'form-control', :style =>"height:25px" %>
         </div>
 
-        <div class="col-sm-4" style:"width=200;height=200">
-             <h4 class = 'first_field header'>Saturday</h4>
-
-            <%= f.label "open", :class => 'first_field' %>
-            <%= f.time_field :sat_open, :class => 'form-control' %>
-
-            <%= f.label "close", :class => 'first_field' %>
-            <%= f.time_field :sat_close, :class => 'form-control' %>
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :mon_close, :class => 'form-control', :style =>"height:25px" %>
         </div>
       </div>
 
+      <div class="row" >
+        <div class="col-sm-4" style:"width=200;">
+          <p class = 'first_field header'>Tuesday</p>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :tues_open, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :tues_close, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-sm-4" style:"width=200;">
+          <p class = 'first_field header'>Wednesday</p>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :wed_open, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field'%>
+          <%= f.time_field :wed_close, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-sm-4" style:"width=200;">
+          <p class = 'first_field header'>Thursday</p>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :thurs_open, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :thurs_close, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-sm-4" style:"width=200;">
+          <p class = 'first_field header'>Friday</p>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :fri_open, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :fri_close, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+      </div>
+
+       <div class="row" >
+        <div class="col-sm-4" style:"width=200;">
+          <p class = 'first_field header'>Saturday</p>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :sat_open, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+
+        <div class="col-sm-4" style:"width=200;">
+          <%= f.label " ", :class => 'first_field' %>
+          <%= f.time_field :sat_close, :class => 'form-control', :style =>"height:25px" %>
+        </div>
+      </div>
 
 
 
@@ -115,7 +168,7 @@
       <%= f.telephone_field :phone_number, :class => 'form-control' %>
 
 
-      <%= f.label "Address", :class => 'first_field' %>
+      <%= f.label "Donation Drop Off Address", :class => 'first_field' %>
       <%= f.text_field :address, :class => 'form-control' %>
 
       <%= f.text_field :address_line_2, :class => 'form-control' %>
